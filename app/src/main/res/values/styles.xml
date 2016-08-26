@@ -1,0 +1,16 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CustomDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name = "android:background">#140f2b</item>
+        <item name = "android:textColorPrimary">#ffffff</item>
+    </style>
+
+</resources>

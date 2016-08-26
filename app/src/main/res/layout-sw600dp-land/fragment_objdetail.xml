@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:cardCornerRadius="22dp"
+    app:cardPreventCornerOverlap="false">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/about_border">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/back_button" />
+
+            <ImageView
+                android:id="@+id/objectImage"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp" />
+
+            <TextView
+                android:id="@+id/objectName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectImage"
+                android:layout_centerHorizontal="true"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/diameterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/diameter_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/objectDiameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectName"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/diameterLabel"
+                android:layout_toEndOf="@+id/diameterLabel"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/massLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/diameterLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/mass_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/objectMass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectDiameter"
+                android:layout_toRightOf="@+id/massLabel"
+                android:layout_toEndOf="@+id/massLabel"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/distanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/massLabel"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/orbit_label"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/objectDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectMass"
+                android:layout_toRightOf="@+id/distanceLabel"
+                android:layout_toEndOf="@+id/distanceLabel"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/distanceLabel"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="@string/divider"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/objectDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/webLinks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/objectDescription"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+    </ScrollView>
+</android.support.v7.widget.CardView>
+

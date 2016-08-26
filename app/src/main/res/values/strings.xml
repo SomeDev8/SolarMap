@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SolarMap</string>
+    <string name="moon_distance">Distance from Earth: </string>
+    <string name="general_info">This application was developed for educational purposes</string>
+    <string name="credits_info">"\nCelestial images and information provided by The National Aeronautics and Space Administration (NASA) \n \nAdditional resources include astro.cornell.edu, ucmp.berkeley.edu, ase.tufts.edu, Universetoday.com, Space.com and nineplanets.org"</string>
+    <string name="diameter_text">Diameter(km):</string>
+    <string name="mass_label">Mass(kg):</string>
+    <string name="orbit_label">Orbit(AVG)(Km):</string>
+    <string name="divider">________________________</string>
+    <string name="diameter_label">Diameter(km):</string>
+
+</resources>

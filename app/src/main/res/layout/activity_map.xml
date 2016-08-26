@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map_background"
+    tools:context="com.rorysoft.solarmap.Map"
+    android:id="@+id/map_layout">
+
+    <ImageView
+        android:id="@+id/homeButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/home_button"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/musicToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="100dp"
+        android:layout_marginEnd="100dp"/>
+
+    <ImageView
+        android:id="@+id/infoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/info_button"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp"
+        />
+
+    <ImageView
+        android:id="@+id/mercury"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sun"
+        android:layout_toLeftOf="@+id/sun"
+        android:layout_toStartOf="@+id/sun"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/mercury" />
+
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:src="@drawable/sun" />
+
+    <ImageView
+        android:id="@+id/earth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/sun"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="41dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/earth" />
+
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/earth"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/moon" />
+
+    <ImageView
+        android:id="@+id/jupiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/mercury"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/mercury"
+        android:layout_marginBottom="91dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/jupiter" />
+
+    <ImageView
+        android:id="@+id/mars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/mars"
+        android:layout_marginBottom="22dp"
+        android:layout_above="@+id/mercury"
+        android:layout_alignRight="@+id/earth"
+        android:layout_alignEnd="@+id/earth" />
+
+    <ImageView
+        android:id="@+id/neptune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="15dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/neptune" />
+
+    <ImageView
+        android:id="@+id/pluto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/pluto" />
+
+    <ImageView
+        android:id="@+id/saturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/saturn" />
+
+    <ImageView
+        android:id="@+id/uranus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/uranus" />
+
+    <ImageView
+        android:id="@+id/venus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/venus"
+        android:layout_below="@+id/earth"
+        android:layout_alignLeft="@+id/infoButton"
+        android:layout_alignStart="@+id/infoButton" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.95"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        >
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
