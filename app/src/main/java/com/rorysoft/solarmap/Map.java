@@ -312,54 +312,7 @@ public class Map extends AppCompatActivity {
         sun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-
-                            Cursor cursor = databaseController.getData(1);
-                            ObjFragment objFragment;
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.sun_detail;
-                            String url = "<html><a href=\"http://www.nasa.gov/sun\">Visit NASA</a> for up-to-date info</html>";
-                            objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    sun.startAnimation(compileAnim);
-                }
+                openFragment(1, Constants.SUN_IMGPATH, Constants.SUN_URL, sun);
             }
         });
     }
@@ -369,53 +322,7 @@ public class Map extends AppCompatActivity {
         mercury.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(2);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.mercury_detail;
-                            String url = "<html><a href=\"http://www.nasa.gov/planetmercury\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    mercury.startAnimation(compileAnim);
-                }
+                openFragment(2, Constants.MERCURY_IMGPATH, Constants.MERCURY_URL, mercury);
             }
         });
     }
@@ -425,53 +332,8 @@ public class Map extends AppCompatActivity {
         venus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
+                openFragment(3, Constants.VENUS_IMGPATH, Constants.VENUS_URL, venus);
 
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(3);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.venus_detail;
-                            String url = "<html><a href=\"https://www.nasa.gov/venus\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    venus.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -482,52 +344,7 @@ public class Map extends AppCompatActivity {
         earth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(4);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.earth_detail;
-                            String url = "<html><a href=\"http://earthobservatory.nasa.gov/\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    earth.startAnimation(compileAnim);
-                }
+                openFragment(4, Constants.EARTH_IMGPATH, Constants.EARTH_URL, earth);
             }
         });
     }
@@ -537,52 +354,7 @@ public class Map extends AppCompatActivity {
         mars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(5);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.mars_detail;
-                            String url = "<html><a href=\"http://mars.nasa.gov/\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    mars.startAnimation(compileAnim);
-                }
+                openFragment(5, Constants.MARS_IMGPATH, Constants.MARS_URL, mars);
             }
         });
     }
@@ -592,53 +364,8 @@ public class Map extends AppCompatActivity {
         jupiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
+                openFragment(6, Constants.JUPITER_IMGPATH, Constants.JUPITER_URL, jupiter);
 
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(6);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.jupiter_detail;
-                            String url = "<html><a href=\"https://www.nasa.gov/jupiter\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    jupiter.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -649,53 +376,8 @@ public class Map extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
+                openFragment(7, Constants.SATURN_IMGPATH, Constants.SATURN_URL, saturn);
 
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(7);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.saturn_detail;
-                            String url = "<html><a href=\"http://www.nasa.gov/saturn\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    saturn.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -705,53 +387,8 @@ public class Map extends AppCompatActivity {
         uranus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
+                openFragment(8, Constants.URANUS_IMGPATH, Constants.URANUS_URL, uranus);
 
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(8);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.uranus_detail;
-                            String url = "<html><a href=\"http://www.nasa.gov/uranus\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    uranus.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -760,53 +397,8 @@ public class Map extends AppCompatActivity {
         neptune.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
+                openFragment(9, Constants.NEPTUNE_IMGPATH, Constants.NEPTUNE_URL, neptune);
 
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(9);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.neptune_detail;
-                            String url = "<html><a href=\"https://www.nasa.gov/subject/3157/neptune/\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    neptune.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -815,53 +407,8 @@ public class Map extends AppCompatActivity {
         pluto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
+                openFragment(10, Constants.PLUTO_IMGPATH, Constants.PLUTO_URL, pluto);
 
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(10);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.pluto_detail;
-                            String url = "<html><a href=\"http://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-pluto-k4.html\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment")
-                                    .commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    pluto.startAnimation(compileAnim);
-                }
             }
         });
     }
@@ -870,54 +417,57 @@ public class Map extends AppCompatActivity {
         moon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
-                        getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
-                    mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
-                    mediaPlayer.start();
-
-                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            mediaPlayer.reset();
-                            mediaPlayer.release();
-                        }
-                    });
-
-                    compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    compileAnim.setDuration(Constants.ANIMATION_DURATION);
-
-                    compileAnim.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                            if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
-                                getSupportFragmentManager().popBackStack();
-                            }
-                            Cursor cursor = databaseController.getData(11);
-
-                            String[] values = setValues(cursor);
-                            int image_path = R.drawable.moon_detail;
-                            String url = "<html><a href=\"http://solarsystem.nasa.gov/moon/home.cfm\">Visit NASA</a> for up-to-date info</html>";
-                            ObjFragment objFragment = ObjFragment.newInstance(values, image_path, url);
-                            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                                    .replace(R.id.fragmentContainer, objFragment, "objFragment")
-                                    .addToBackStack("objFragment").commit();
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-                        }
-                    });
-                    moon.startAnimation(compileAnim);
-                }
+               openFragment(11, Constants.MOON_IMGPATH, Constants.MOON_URL, moon);
             }
         });
+    }
+
+    private void openFragment(final int data, final int imgPath, final String url, final ImageView view) {
+        if (getSupportFragmentManager().findFragmentByTag("objFragment") == null &&
+                getSupportFragmentManager().findFragmentByTag("aboutFragment") == null) {
+            mediaPlayer = MediaPlayer.create(Map.this, R.raw.click_obj);
+            mediaPlayer.start();
+
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mediaPlayer.reset();
+                    mediaPlayer.release();
+                }
+            });
+
+            compileAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
+            compileAnim.setDuration(Constants.ANIMATION_DURATION);
+
+            compileAnim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    if (getSupportFragmentManager().findFragmentByTag("objFragment") != null) {
+                        getSupportFragmentManager().popBackStack();
+                    }
+                    Cursor cursor = databaseController.getData(data);
+
+                    String[] values = setValues(cursor);
+                    ObjFragment objFragment = ObjFragment.newInstance(values, imgPath, url);
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .replace(R.id.fragmentContainer, objFragment, "objFragment")
+                            .addToBackStack("objFragment").commit();
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+            });
+            view.startAnimation(compileAnim);
+        }
+
     }
 
     // Retrieve database values through an array of strings corresponding to column names and index.
